@@ -1,0 +1,9 @@
+Package: rstanmodeldev
+Title: Tools for development of Stan models and Simulation-Based Calibration
+Version: 0.0.0.9000
+Authors@R: person("Martin", "Modrák", email = "martin.modrak@biomed.cas.cz", role = c("aut", "cre"))
+Description: TODO 
+Depends: R (>= 3.5.1)
+License: Apache License 2.0
+Encoding: UTF-8
+LazyData: true
