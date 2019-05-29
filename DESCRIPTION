@@ -7,3 +7,15 @@ Depends: R (>= 3.5.1)
 License: Apache License 2.0
 Encoding: UTF-8
 LazyData: true
+Imports: 
+    rstan,
+    ggplot2,
+    dplyr,
+    magrittr,
+    purrr,
+    plyr
+Suggests: 
+    loo,
+    future,
+    shinystan,
+    matrixStats
