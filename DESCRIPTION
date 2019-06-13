@@ -13,9 +13,11 @@ Imports:
     dplyr,
     magrittr,
     purrr,
-    plyr
+    plyr,
+    tibble
 Suggests: 
     loo,
     future,
     shinystan,
-    matrixStats
+    matrixStats,
+    testthat (>= 2.1.0)

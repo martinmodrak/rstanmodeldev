@@ -18,8 +18,8 @@ sbc <- function(model, generator, N_steps, ...) {
     })
     diagnostics <- fits %>% purrr::imap_dfr(function(fit, run_id) {
         data.frame(run = run_id, n_divergent = rstan::get_num_divergent(fit), n_treedepth = rstan::get_num_max_treedepth(fit),
-            n_chains_low_bfmi = length(rstan::get_low_bfmi_chains(fit)), total_time = sum(rstan::get_elapsed_time(fit)), min_n_eff = min(summary(fit)$summary[,
-                "n_eff"], na.rm = TRUE), max_Rhat = max(summary(fit)$summary[, "Rhat"], na.rm = TRUE))
+            n_chains_low_bfmi = length(rstan::get_low_bfmi_chains(fit)), total_time = sum(rstan::get_elapsed_time(fit)), min_n_eff = min(rstan::summary(fit)$summary[,
+                "n_eff"], na.rm = TRUE), max_Rhat = max(rstan::summary(fit)$summary[, "Rhat"], na.rm = TRUE))
     })
 
     return(list(params = param_stats, diagnostics = diagnostics, data = observed_list, true_values = true_list))

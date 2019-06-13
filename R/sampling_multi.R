@@ -24,7 +24,7 @@
 #'   `combine_fun` to each set of `chains` result of applying `map_fun`
 #'   to each fit.
 #' @export
-sampling_multi <- function(models, data, map_fun = sampling_multi_noop, combine_fun = sflist2stanfit, chains = 4, cores = parallel::detectCores(),
+sampling_multi <- function(models, data, map_fun = sampling_multi_noop, combine_fun = rstan::sflist2stanfit, chains = 4, cores = parallel::detectCores(),
     init = NULL, control = NULL, init_per_item = NULL, control_per_item = NULL, map_fun_dependencies = c(), R_session_init_expr = NULL,
     cache_dir = NULL, ids_to_compute = 1:length(data), ...) {
 

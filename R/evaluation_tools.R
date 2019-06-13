@@ -24,7 +24,7 @@ evaluate_single_param_indices <- function(
         full_name <- param_name
     }
 
-    return(tibble(param_name = full_name,
+    return(tibble::tibble(param_name = full_name,
                   true_value = true_value,
                   median = median(param_samples),
                   IQR = IQR(param_samples),
