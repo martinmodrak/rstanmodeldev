@@ -26,14 +26,20 @@
 #' @export
 sampling_multi <- function(models, data, map_fun = sampling_multi_noop, combine_fun = rstan::sflist2stanfit, chains = 4, cores = parallel::detectCores(),
     init = NULL, control = NULL, init_per_item = NULL, control_per_item = NULL, map_fun_dependencies = c(), R_session_init_expr = NULL,
-    cache_dir = NULL, ids_to_compute = 1:length(data), ...) {
+    cache_dir = NULL, ids_to_compute = 1:length(data), cluster_options = list(), ...) {
 
     # TODO: argument validation
     if (!is.null(cache_dir) && !dir.exists(cache_dir)) {
         stop(paste0("Cache dir '", cache_dir, "'  does not exist"))
     }
 
-    cl <- parallel::makeCluster(cores, useXDR = FALSE)
+    if(is.null(cluster_options$spec)) {
+        cluster_options$spec <- cores
+    }
+    if(is.null(cluster_options$useXDR)) {
+        cluster_options$useXDR <- FALSE
+    }
+    cl <- do.call(parallel::makeCluster, cluster_options)
     on.exit(parallel::stopCluster(cl))
 
     # Prepare argument lists for all calls
